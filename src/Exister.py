@@ -40,7 +40,7 @@ while True:
 	open(os.path.join(workdir, 'src_tmp.txt'), 'wb').write(row['src'])
 	open(os.path.join(workdir, 'in.txt'), 'wb').write(row['in_file'])
 	cmp_res = subprocess.call(
-		['bash', './shell/compile_{}.sh'.format(row['src_ext']), workdir],
+		['./shell/compile_{}.sh'.format(row['src_ext']), workdir],
 		timeout=compile_tle)
 	if cmp_res != 0:
 		res['result'] = 'CE:compile error'
@@ -49,7 +49,7 @@ while True:
 		import time
 		s_time = time.time()
 		run_res = subprocess.call(
-			['bash', './shell/run_{}.sh'.format(row['src_ext']), workdir],
+			['./shell/run_{}.sh'.format(row['src_ext']), workdir],
 			timeout=exec_tle)
 		res['exec_time'] = (int)((time.time()-s_time)*1000)
 		if run_res != 0:
